@@ -3,12 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class CrashDetector : MonoBehaviour
 {
-    void OnTriggerEnter2D(Collider2D other)
+    [SerializeField] private float reloadDelay = 1f;
+
+    void OnTriggeerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Ground"))
         {
             Debug.Log("오! 내머리야!");
-            SceneManager.LoadScene(0);
+            Invoke(nameof(ReloadScene), reloadDelay);
         }
     }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
+
