@@ -1,15 +1,29 @@
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CrashDetector : MonoBehaviour
 {
     [SerializeField] private float reloadDelay = 1f;
+    [SerializeField] private ParticleSystem crashEffect;
+    [SerializeField] private AudioClip crashSound;
 
-    void OnTriggeerEnter2D(Collider2D other)
+    private AudioSource audioSource;
+    private PlayController playerController;
+
+    private void Start()
     {
-        if (other.CompareTag("Ground"))
+        audioSource = GetComponent<AudioSource>();
+        playerController = GetComponent<PlayController>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
         {
-            Debug.Log("오! 내머리야!");
+            crashEffect.Play();
+            audioSource.PlayOneShot(crashSound);
+            playerController.GameOVer();
             Invoke(nameof(ReloadScene), reloadDelay);
         }
     }

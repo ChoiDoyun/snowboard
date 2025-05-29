@@ -251,7 +251,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9017267, y: 4.9, z: -10}
+  m_LocalPosition: {x: -2.89601, y: 4.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -474,7 +474,7 @@ Transform:
   m_GameObject: {fileID: 934959900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.9017267, y: 4.9, z: -10}
+  m_LocalPosition: {x: -2.89601, y: 4.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2316,6 +2316,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torqueForce: 10
+  baseSpeed: 20
+  boostSpeed: 30
 --- !u!114 &1266744463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2328,6 +2330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74265eeeb722612488df828d8be6be06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reloadDelay: 1
+  crashEffect: {fileID: 1788318584}
 --- !u!1 &1273345579
 GameObject:
   m_ObjectHideFlags: 0
@@ -2716,7 +2720,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -2953,7 +2957,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.4
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -12285,6 +12289,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1959e2834796ba64fa5513ca7f8b4f86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reloadDelay: 2
+  finishEffect: {fileID: 1805762181}
 --- !u!61 &2081839226
 BoxCollider2D:
   m_ObjectHideFlags: 0
