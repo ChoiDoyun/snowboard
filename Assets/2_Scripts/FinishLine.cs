@@ -3,31 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class FinishLine : MonoBehaviour
 {
-    [SerializeField] private float reloadDelay = 2f;
+    [SerializeField] private float delayBeforLoading = 2f;
     [SerializeField] private ParticleSystem finishEffect;
 
-    private AudioSource audioSource;
-    private bool isFinished = false;
-
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && !isFinished)
+        if (collision.CompareTag("Player"))
         {
-            isFinished = true;
-
             finishEffect.Play();
-            audioSource.Play();
-            Invoke(nameof(ReloadScene), reloadDelay);
+            Invoke(nameof(LoadSceneMode), delayBeforLoading);
         }
     }
 
-    void ReloadScene()
+    private void LoadSceneMode()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0); // Assuming scene index 1 is the next level
     }
+
 }
